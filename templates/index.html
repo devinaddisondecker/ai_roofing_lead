@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html>
+<head>
+<title>AI Roofing Lead Generator</title>
+<style>
+body{
+font-family:Arial;
+background:#f5f6f8;
+margin:40px;
+}
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+margin-top:20px;
+}
+input{
+width:400px;
+padding:12px;
+}
+button{
+padding:12px 20px;
+background:#111;
+color:white;
+border:0;
+border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>AI Roofing Lead Generator</h1>
+
+<p>
+Address → Owner → Roof Measurement → AI Outreach
+</p>
+
+
+<div class="card">
+
+<form method="post">
+
+<input
+name="address"
+placeholder="1358 W Indiana Ave Salt Lake City UT 84104"
+required>
+
+<button>
+Analyze
+</button>
+
+</form>
+
+</div>
+
+
+{% if result %}
+
+<div class="card">
+
+<h2>{{result.address}}</h2>
+
+<h3>Owner</h3>
+{{result.owner}}
+({{result.property_type}}, built {{result.year_built}})
+
+<h3>Contact</h3>
+{{result.email}}<br>
+{{result.phone}}
+
+
+<h3>Roof</h3>
+
+Area:
+{{result.roof_area_sqft}} sq ft
+
+<br>
+
+Segments:
+{{result.roof_segments}}
+
+<br>
+
+Pitch:
+{{result.pitch}}°
+
+<br>
+
+Quality:
+{{result.roof_quality}}
+
+
+<h3>Lead Score</h3>
+
+{{result.lead_score}} / 100
+<br>
+{{result.lead_score_reason}}
+
+
+<h3>Generated Email</h3>
+
+<pre>
+{{result.email_message}}
+</pre>
+
+
+<h3>CRM Export</h3>
+
+<pre>
+{{result.crm_payload_json}}
+</pre>
+
+
+</div>
+
+{% endif %}
+
+
+</body>
+</html>
